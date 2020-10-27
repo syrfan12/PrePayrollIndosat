@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Conv_LSMW" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1011,2662" sap2010:WorkflowViewState.IdRef="Conv_LSMW_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="lsmw_newhire" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1011,3229" sap2010:WorkflowViewState.IdRef="lsmw_newhire_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="50">
+    <scg:List x:TypeArguments="x:String" Capacity="35">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -22,18 +22,24 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
-      <x:String>UiPath.Excel</x:String>
-      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="21">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -50,22 +56,18 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Excel</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>UiPath.CV</AssemblyReference>
-      <AssemblyReference>System.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Conv_LSMW" sap:VirtualizedContainerService.HintSize="701,2497" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="lsmw_newhire" sap:VirtualizedContainerService.HintSize="701,3064" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
+      <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="email" />
       <Variable x:TypeArguments="sd:DataTable" Name="DataTab" />
-      <Variable x:TypeArguments="x:String" Name="wageType" />
-      <Variable x:TypeArguments="x:String" Name="WageAmount" />
+      <Variable x:TypeArguments="sd:DataTable" Name="range" />
       <Variable x:TypeArguments="x:String" Name="Text_From_DataTable" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -75,55 +77,55 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:BuildDataTable DataTable="[DataTab]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="659,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Pers._x0020_number&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Subtype&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;End_x0020_Date&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;upload_PENS&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Wage_x0020_Type&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Wage_x0020_Type_x0020_Amount_x0020_for_x0020_Payments&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Currency_x0020_Key&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Pers._x0020_number&gt;text&lt;/Pers._x0020_number&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;" />
     <ui:ClearDataTable DataTable="[DataTab]" DisplayName="Clear Data Table" sap:VirtualizedContainerService.HintSize="659,22" sap2010:WorkflowViewState.IdRef="ClearDataTable_1" />
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="659,1911" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="PKPS_08_20.xls">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="659,2377" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="Payroll\2020\10\Reguler\New Hire\Extracted\Syahid Al Irfan\New Hire.xlsx">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="625,1802" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="625,2268" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <Sequence.Variables>
-              <Variable x:TypeArguments="sd:DataTable" Name="Kopensat" />
-              <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="PerNumb" />
-              <Variable x:TypeArguments="s:String[][]" Name="Data_Upload" />
-              <Variable x:TypeArguments="s:String[]" Name="data" />
+              <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="PersNo" />
               <Variable x:TypeArguments="x:Int32" Name="idx" />
-              <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="Amount" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelReadColumn DisplayName="Read Column" sap:VirtualizedContainerService.HintSize="583,59" sap2010:WorkflowViewState.IdRef="ExcelReadColumn_1" Result="[PerNumb]" SheetName="AGUSTUS 2020 OK" StartingCell="B9" />
-            <ui:ExcelReadRange AddHeaders="False" DataTable="[Kopensat]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="583,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" Range="[&quot;B9:I&quot;+(PerNumb.Count+8).ToString]" SheetName="AGUSTUS 2020 OK" />
-            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[Kopensat]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="583,1385" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ExcelReadColumn DisplayName="Read Column" sap:VirtualizedContainerService.HintSize="583,59" sap2010:WorkflowViewState.IdRef="ExcelReadColumn_1" Result="[PersNo]" SheetName="New Hire" StartingCell="B5" />
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[range]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="583,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="[&quot;M5:O&quot;+(PersNo.Count+4).ToString]" SheetName="New Hire" />
+            <ui:ForEachRow CurrentIndex="[idx]" DataTable="[range]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="583,1978" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="533,1238" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="533,1831" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="wageType" />
+                      <Variable x:TypeArguments="x:String" Name="WageAmount" />
+                    </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[row(2).ToString.Equals(&quot;0&quot;)]" sap:VirtualizedContainerService.HintSize="491,553" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If Condition="[row(0).ToString.Equals(&quot;0&quot;)]" sap:VirtualizedContainerService.HintSize="491,553" sap2010:WorkflowViewState.IdRef="If_1">
                       <If.Else>
-                        <Sequence sap:VirtualizedContainerService.HintSize="346,406" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <Sequence sap:VirtualizedContainerService.HintSize="346,406" sap2010:WorkflowViewState.IdRef="Sequence_3">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <Sequence sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_2">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:String">[wageType]</OutArgument>
                               </Assign.To>
@@ -131,7 +133,77 @@
                                 <InArgument x:TypeArguments="x:String">4023</InArgument>
                               </Assign.Value>
                             </Assign>
+                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[WageAmount]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[row(0).ToString]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{PersNo(idx).ToString.Substring(4,4),&quot;&quot;,&#x9;&quot;31.10.2020&quot;,&#x9;&quot;01.10.2020&quot;,&#x9;wageType,&#x9;WageAmount,&#x9;&quot;IDR&quot;&#xA;}]" DataTable="[DataTab]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="304,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <If Condition="[row(1).ToString.Equals(&quot;0&quot;)]" sap:VirtualizedContainerService.HintSize="491,553" sap2010:WorkflowViewState.IdRef="If_2">
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="346,406" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[wageType]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">4024</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[WageAmount]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[row(1).ToString]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ PersNo(idx).ToString.Substring(4,4),&quot;&quot;,&#x9;&quot;31.10.2020&quot;,&#x9;&quot;01.10.2020&quot;,&#x9;wageType,&#x9;WageAmount,&#x9;&quot;IDR&quot;&#xA;}]" DataTable="[DataTab]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="304,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <If Condition="[row(2).ToString.Equals(&quot;0&quot;)]" sap:VirtualizedContainerService.HintSize="491,553" sap2010:WorkflowViewState.IdRef="If_3">
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="346,406" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
                             <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[wageType]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">4025</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:String">[WageAmount]</OutArgument>
                               </Assign.To>
@@ -140,42 +212,7 @@
                               </Assign.Value>
                             </Assign>
                           </Sequence>
-                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{row(0).ToString.Substring(4,4),&quot;&quot;,&#x9;&quot;31.10.2020&quot;,&#x9;&quot;01.10.2020&quot;,&#x9;wageType,&#x9;WageAmount,&#x9;&quot;IDR&quot;&#xA;}]" DataTable="[DataTab]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="304,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
-                        </Sequence>
-                      </If.Else>
-                    </If>
-                    <If Condition="[row(3).ToString.Equals(&quot;0&quot;)]" sap:VirtualizedContainerService.HintSize="491,553" sap2010:WorkflowViewState.IdRef="If_2">
-                      <If.Else>
-                        <Sequence sap:VirtualizedContainerService.HintSize="346,406" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <Sequence sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:String">[wageType]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">4024</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:String">[WageAmount]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">[row(3).ToString]</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                          </Sequence>
-                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{row(0).ToString.Substring(4,4),&quot;&quot;,&#x9;System.DateTime.DaysInMonth( Now.Year, Now.Month).ToString+&quot;.&quot;+Now.Month.ToString+&quot;.&quot;+Now.Year.ToString,&#x9;&quot;01.&quot;+Now.Month.ToString+&quot;.&quot;+Now.Year.ToString,&#x9;wageType,&#x9;WageAmount,&#x9;&quot;IDR&quot;}]" DataTable="[DataTab]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="304,22" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ PersNo(idx).ToString.Substring(4,4),&quot;&quot;,&#x9;&quot;31.10.2020&quot;,&#x9;&quot;01.10.2020&quot;,&#x9;wageType,&#x9;WageAmount,&#x9;&quot;IDR&quot;&#xA;}]" DataTable="[DataTab]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="304,22" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
                         </Sequence>
                       </If.Else>
                     </If>
@@ -183,13 +220,13 @@
                 </ActivityAction>
               </ui:ForEachRow.Body>
             </ui:ForEachRow>
-            <ui:ExcelWriteRange AddHeaders="True" DataTable="[DataTab]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="583,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Upload_LSMW" StartingCell="A1" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
     <ui:OutputDataTable DataTable="[DataTab]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="659,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[Text_From_DataTable]" />
     <ui:Replace sap:VirtualizedContainerService.HintSize="659,59" sap2010:WorkflowViewState.IdRef="Replace_1" Input="[Text_From_DataTable]" IsBuilderTabModified="False" Pattern="," RegexOption="IgnoreCase, Compiled" Replacement="&#x9;" Result="[Text_From_DataTable]" />
-    <ui:WriteTextFile DisplayName="Write Text File" FileName="coba.txt" sap:VirtualizedContainerService.HintSize="659,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[Text_From_DataTable]" />
+    <ui:WriteTextFile DisplayName="Write Text File" FileName="Payroll\2020\10\Reguler\New Hire\Extracted\Syahid Al Irfan\lsmw.txt" sap:VirtualizedContainerService.HintSize="659,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[Text_From_DataTable]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="659,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" />
   </Sequence>
 </Activity>

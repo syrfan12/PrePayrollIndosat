@@ -6,10 +6,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1037,1675</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1011,1675</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>bacaTvextract_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="21">
+    <scg:List x:TypeArguments="x:String" Capacity="42">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -31,6 +31,9 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -60,7 +63,7 @@
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="bacaTvextract" sap:VirtualizedContainerService.HintSize="699,1510" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -195,7 +198,7 @@
                               </ui:CursorPosition>
                             </ui:Click.CursorPosition>
                             <ui:Click.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="90ca2cf1-ab9f-4955-9747-9c7eb4900407" InformativeScreenshot="c5b3e0c82bab88c4f6479be0fba815d4" Selector="&lt;webctrl aaname=' Document &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;             &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;             &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; *' tag='A' /&gt;">
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="90ca2cf1-ab9f-4955-9747-9c7eb4900407" InformativeScreenshot="418abc1aa5ca3770e66841155cfd4775" Selector="&lt;webctrl aaname=' Document &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;             &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;             &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; *' tag='A' /&gt;">
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
                                 </ui:Target.TimeoutMS>
@@ -222,7 +225,7 @@
                               </ui:CursorPosition>
                             </ui:Click.CursorPosition>
                             <ui:Click.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="059d0077-00b8-4e09-8038-37b4764a6411" InformativeScreenshot="10605a95a98b1a52a0fa670cbd0c2d94" Selector="&lt;webctrl id='btn_add_new' tag='A' /&gt;">
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="059d0077-00b8-4e09-8038-37b4764a6411" InformativeScreenshot="1fb9f562c9136906eb09614884292273" Selector="&lt;webctrl id='btn_add_new' tag='A' /&gt;">
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
                                 </ui:Target.TimeoutMS>
@@ -249,9 +252,9 @@
                               </ui:CursorPosition>
                             </ui:Click.CursorPosition>
                             <ui:Click.Target>
-                              <ui:Target Element="{x:Null}" Id="4c5cc65d-77d2-4f52-add0-a252d9e9a6dc" InformativeScreenshot="8e8d8656ff8321ddec8e18dd18bc2e11" Selector="&lt;webctrl id='test_file_galery' tag='DIV' /&gt;">
+                              <ui:Target Element="{x:Null}" Id="4c5cc65d-77d2-4f52-add0-a252d9e9a6dc" InformativeScreenshot="a8c546d557eaddb5a9919069a85feabc" Selector="&lt;webctrl id='test_file_galery' tag='DIV' /&gt;">
                                 <ui:Target.ClippingRegion>
-                                  <ui:Region Rectangle="31, 16, 106, 39" />
+                                  <ui:Region Rectangle="28, 12, 125, 56" />
                                 </ui:Target.ClippingRegion>
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
@@ -414,7 +417,7 @@
                             <av:Size x:Key="ShapeSize">200,66</av:Size>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence sap:VirtualizedContainerService.HintSize="376,1667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <Sequence sap:VirtualizedContainerService.HintSize="376,1612" sap2010:WorkflowViewState.IdRef="Sequence_6">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:String" Name="Marital" />
                             <Variable x:TypeArguments="x:String" Name="Nationality" />
@@ -488,7 +491,7 @@
                           </ui:Click>
                           <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'INPUT  Nama'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_6">
                             <ui:GetValue.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4be4c865-53dc-4049-8af8-07f6a0459d23" InformativeScreenshot="65e77b13ba39ce73d8e43a543369fcb8" Selector="&lt;webctrl id='Nama' tag='INPUT' /&gt;">
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4be4c865-53dc-4049-8af8-07f6a0459d23" InformativeScreenshot="e8c2fdd99693a5fe1c5d0dcbc6871baa" Selector="&lt;webctrl id='NAMA' tag='INPUT' /&gt;">
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
                                 </ui:Target.TimeoutMS>
@@ -503,7 +506,7 @@
                           </ui:GetValue>
                           <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Chrome_RenderWidgetHost...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_7">
                             <ui:GetValue.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bfad93b3-c10c-4191-9b19-05e3e446a5da" InformativeScreenshot="a7a8e869dd2473c4de99d25f6c2f0368" Selector="&lt;webctrl id='Jenis Kelamin' tag='INPUT' /&gt;">
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bfad93b3-c10c-4191-9b19-05e3e446a5da" InformativeScreenshot="f3c70e26a983a3b3bb2dc2af479f5d59" Selector="&lt;webctrl id='KELAMIN' tag='INPUT' /&gt;">
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
                                 </ui:Target.TimeoutMS>
@@ -518,7 +521,7 @@
                           </ui:GetValue>
                           <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'INPUT  Kawin'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
                             <ui:GetValue.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9883666e-93f2-41c5-a529-85027be88b60" InformativeScreenshot="4aef60cab31b1d63f318f6ea04dd3a71" Selector="&lt;webctrl id='Kawin' tag='INPUT' /&gt;">
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9883666e-93f2-41c5-a529-85027be88b60" InformativeScreenshot="2f386b4de2567dde9bd555f0f6644372" Selector="&lt;webctrl id='PERKAWINAN' tag='INPUT' /&gt;">
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
                                 </ui:Target.TimeoutMS>
@@ -533,7 +536,7 @@
                           </ui:GetValue>
                           <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'INPUT  Kewarganegaraan'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
                             <ui:GetValue.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5096cce4-31f4-4b2d-81ee-9f3413a0f308" InformativeScreenshot="e1e18960d849eb51142403102128bbda" Selector="&lt;webctrl id='Kewarganegaraan' tag='INPUT' /&gt;">
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5096cce4-31f4-4b2d-81ee-9f3413a0f308" InformativeScreenshot="70b3dcdbc398d99944ec6ccf8107d7eb" Selector="&lt;webctrl id='KEWARGANEGARAAN' tag='INPUT' /&gt;">
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
                                 </ui:Target.TimeoutMS>
@@ -548,7 +551,7 @@
                           </ui:GetValue>
                           <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'INPUT  Agama'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_3">
                             <ui:GetValue.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="07749b17-00c3-46aa-a743-4e0f4c675959" InformativeScreenshot="890b5c1525f7c8a21c0238032be6ff26" Selector="&lt;webctrl id='Agama' tag='INPUT' /&gt;">
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="07749b17-00c3-46aa-a743-4e0f4c675959" InformativeScreenshot="3c29b8730c03c98c5d70887d359aeb94" Selector="&lt;webctrl id='AGAMA' tag='INPUT' /&gt;">
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
                                 </ui:Target.TimeoutMS>
@@ -561,24 +564,41 @@
                               <OutArgument x:TypeArguments="x:String">[Religion]</OutArgument>
                             </ui:GetValue.Value>
                           </ui:GetValue>
-                          <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'INPUT  Tanggal Lahir'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_4">
-                            <ui:GetValue.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="737e72fe-e385-4420-aa84-2d79d4430f01" InformativeScreenshot="27a787a8785ba50226a251db82e5e9a8" Selector="&lt;webctrl id='Tanggal Lahir' tag='INPUT' /&gt;">
-                                <ui:Target.TimeoutMS>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:Target.TimeoutMS>
-                                <ui:Target.WaitForReady>
-                                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                                </ui:Target.WaitForReady>
-                              </ui:Target>
-                            </ui:GetValue.Target>
-                            <ui:GetValue.Value>
-                              <OutArgument x:TypeArguments="x:String">[Birth]</OutArgument>
-                            </ui:GetValue.Value>
-                          </ui:GetValue>
+                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'INPUT  Tanggal Lahir'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_4">
+                                  <ui:GetValue.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="737e72fe-e385-4420-aa84-2d79d4430f01" InformativeScreenshot="27a787a8785ba50226a251db82e5e9a8" Selector="&lt;webctrl id='Tanggal Lahir' tag='INPUT' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:GetValue.Target>
+                                  <ui:GetValue.Value>
+                                    <OutArgument x:TypeArguments="x:String">[Birth]</OutArgument>
+                                  </ui:GetValue.Value>
+                                </ui:GetValue>
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:CommentOut>
                           <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'INPUT  Id Number'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_5">
                             <ui:GetValue.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa0b5411-10d6-4034-bbd8-24555fb7a12e" InformativeScreenshot="77b3941cb0df29325416a84dbb6d3455" Selector="&lt;webctrl id='Id Number' tag='INPUT' /&gt;">
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa0b5411-10d6-4034-bbd8-24555fb7a12e" InformativeScreenshot="1374f8f7d1ac909bc8a431a58f10576c" Selector="&lt;webctrl id='NIK' tag='INPUT' /&gt;">
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
                                 </ui:Target.TimeoutMS>
@@ -596,7 +616,7 @@
                               <OutArgument x:TypeArguments="s:String[]">[Data_Tvextract]</OutArgument>
                             </Assign.To>
                             <Assign.Value>
-                              <InArgument x:TypeArguments="s:String[]">[{ Gender.Trim, Marital.Trim ,Nationality.Trim ,Religion.Trim, Split( Birth.Trim," ")(0), Split( Birth.Trim," ")(1) ,ID_Number}]</InArgument>
+                              <InArgument x:TypeArguments="s:String[]">[{ Gender.Trim, Marital.Trim ,Nationality.Trim ,Religion.Trim, "MAJALENGKA", "12-03-1997" ,ID_Number.Trim}]</InArgument>
                             </Assign.Value>
                           </Assign>
                           <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[Marital + &quot; &quot; +Nationality + &quot; &quot; +Religion + &quot; &quot; +Birth + &quot; &quot; +ID_Number]" />
