@@ -50,24 +50,8 @@
           "lib/DocumentFormat.OpenXml.dll": {}
         }
       },
-      "DotNetZip/1.13.3": {
+      "Extended.Wpf.Toolkit/3.8.1": {
         "type": "package",
-        "compile": {
-          "lib/net40/_._": {}
-        },
-        "runtime": {
-          "lib/net40/DotNetZip.dll": {}
-        }
-      },
-      "Extended.Wpf.Toolkit/2.8.0": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "PresentationCore",
-          "PresentationFramework",
-          "System",
-          "System.Xaml",
-          "WindowsBase"
-        ],
         "compile": {
           "lib/net40/_._": {}
         },
@@ -76,10 +60,12 @@
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll": {},
           "lib/net40/Xceed.Wpf.AvalonDock.dll": {},
-          "lib/net40/Xceed.Wpf.DataGrid.dll": {},
           "lib/net40/Xceed.Wpf.Toolkit.dll": {}
         },
         "resource": {
+          "lib/net40/cs-CZ/Xceed.Wpf.AvalonDock.resources.dll": {
+            "locale": "cs-CZ"
+          },
           "lib/net40/de/Xceed.Wpf.AvalonDock.resources.dll": {
             "locale": "de"
           },
@@ -973,19 +959,6 @@
         "runtime": {
           "lib/net40/Interop.UnRAR.dll": {}
         }
-      },
-      "WindowsAPICodePack/1.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/_._": {}
-        },
-        "runtime": {
-          "lib/Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll": {},
-          "lib/Microsoft.WindowsAPICodePack.Sensors.dll": {},
-          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {},
-          "lib/Microsoft.WindowsAPICodePack.ShellExtensions.dll": {},
-          "lib/Microsoft.WindowsAPICodePack.dll": {}
-        }
       }
     }
   },
@@ -1070,41 +1043,23 @@
         "lib/DocumentFormat.OpenXml.dll"
       ]
     },
-    "DotNetZip/1.13.3": {
-      "sha512": "URP6Eo8RZ9E8MapQaRDu2Sa7oWf+0M7OrZGPM4H22P64oMiGfGIh7gJqUVX2CBR0i5zjvDvOIwKwHDHLLL6w3Q==",
+    "Extended.Wpf.Toolkit/3.8.1": {
+      "sha512": "eSD4/BY/xV29KaQi9A65VscpeU3rSrlvadIUepSx5ukeUajW3ph8+n4AlOswRMszbD4DDmrJ4g5O51bCUpiOjw==",
       "type": "package",
-      "path": "dotnetzip/1.13.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "dotnetzip.1.13.3.nupkg.sha512",
-        "dotnetzip.nuspec",
-        "lib/net40/DotNetZip.dll",
-        "lib/net40/DotNetZip.pdb",
-        "lib/net40/DotNetZip.xml",
-        "lib/netstandard2.0/DotNetZip.dll",
-        "lib/netstandard2.0/DotNetZip.pdb",
-        "lib/netstandard2.0/DotNetZip.xml"
-      ]
-    },
-    "Extended.Wpf.Toolkit/2.8.0": {
-      "sha512": "wKjJl4sDyXTVzgiKTBTw8jT0/3OwpEklQuWGe1Nz2HX0joiBeUzIurY2mnERni+8XHwateRcuks6yk/cuR22fA==",
-      "type": "package",
-      "path": "extended.wpf.toolkit/2.8.0",
+      "path": "extended.wpf.toolkit/3.8.1",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "extended.wpf.toolkit.2.8.0.nupkg.sha512",
+        "LICENSE.txt",
+        "extended.wpf.toolkit.3.8.1.nupkg.sha512",
         "extended.wpf.toolkit.nuspec",
-        "lib/net35/WPFToolkit.dll",
-        "lib/net35/Xceed.Wpf.Toolkit.dll",
         "lib/net40/Xceed.Wpf.AvalonDock.Themes.Aero.dll",
         "lib/net40/Xceed.Wpf.AvalonDock.Themes.Metro.dll",
         "lib/net40/Xceed.Wpf.AvalonDock.Themes.VS2010.dll",
         "lib/net40/Xceed.Wpf.AvalonDock.dll",
-        "lib/net40/Xceed.Wpf.DataGrid.dll",
         "lib/net40/Xceed.Wpf.Toolkit.dll",
+        "lib/net40/cs-CZ/Xceed.Wpf.AvalonDock.resources.dll",
         "lib/net40/de/Xceed.Wpf.AvalonDock.resources.dll",
         "lib/net40/es/Xceed.Wpf.AvalonDock.resources.dll",
         "lib/net40/fr/Xceed.Wpf.AvalonDock.resources.dll",
@@ -1951,22 +1906,6 @@
         "unrar.activities.1.0.4.nupkg.sha512",
         "unrar.activities.nuspec"
       ]
-    },
-    "WindowsAPICodePack/1.1.0": {
-      "sha512": "7EnqRMSBAQbOg3U1/DzHcwAJ0pZz/2/Z1IXpU23FEFBDRPSXXNw1M3SglIaqRwkbsAJHbNmbX0A3uWZrQzIMtg==",
-      "type": "package",
-      "path": "windowsapicodepack/1.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll",
-        "lib/Microsoft.WindowsAPICodePack.Sensors.dll",
-        "lib/Microsoft.WindowsAPICodePack.Shell.dll",
-        "lib/Microsoft.WindowsAPICodePack.ShellExtensions.dll",
-        "lib/Microsoft.WindowsAPICodePack.dll",
-        "windowsapicodepack.1.1.0.nupkg.sha512",
-        "windowsapicodepack.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -1981,15 +1920,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sy\\.nuget\\packages\\": {}
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "PrePayroll",
       "projectName": "PrePayroll",
-      "projectPath": "C:\\Users\\sy\\Documents\\UiPath\\PrePayroll\\.local",
-      "packagesPath": "C:\\Users\\sy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sy\\Documents\\UiPath\\PrePayroll\\.local"
+      "projectPath": "D:\\ipan\\PrePayrollIndosat\\.local",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "D:\\ipan\\PrePayrollIndosat\\.local"
     },
     "frameworks": {
       "net461": {
@@ -2027,5 +1966,35 @@
         }
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "UiPath.UIAutomation.Activities 20.4.2 depends on Extended.Wpf.Toolkit (>= 2.8.0) but Extended.Wpf.Toolkit 2.8.0 was not found. An approximate best match of Extended.Wpf.Toolkit 3.8.1 was resolved.",
+      "libraryId": "Extended.Wpf.Toolkit",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.6.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package WindowsAPICodePack. No packages exist with this id in source(s): C:\\Users\\Lenovo\\AppData\\Local\\UiPath\\app-20.10.2\\.\\Packages, Connect, https://gallery.uipath.com/api/v2, https://www.myget.org/F/workflow/, Local, Official",
+      "libraryId": "WindowsAPICodePack",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.6.1"
+      ]
+    },
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package DotNetZip. No packages exist with this id in source(s): C:\\Users\\Lenovo\\AppData\\Local\\UiPath\\app-20.10.2\\.\\Packages, Connect, https://gallery.uipath.com/api/v2, https://www.myget.org/F/workflow/, Local, Official",
+      "libraryId": "DotNetZip",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.6.1"
+      ]
+    }
+  ]
 }

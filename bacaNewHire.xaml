@@ -3,11 +3,12 @@
     <x:Property Name="List_Data_Final" Type="OutArgument(scg:List(sd:DataTable))" />
     <x:Property Name="Employee" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="Folder_Date" Type="InArgument(x:String)" />
+    <x:Property Name="Data_Setting_arg" Type="InArgument(scg:IEnumerable(x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1037,1402</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>774,1302</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>bacaNewHire_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
@@ -86,7 +87,7 @@
         <OutArgument x:TypeArguments="s:String[]">[List_Extraxted_Attachment]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="s:String[]">[Directory.GetDirectories( Folder_Date+"\Reguler\New Hire\Extracted")]</InArgument>
+        <InArgument x:TypeArguments="s:String[]">[Directory.GetDirectories( Folder_Date+"\External\New Hire\Extracted")]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="488,945" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="[List_Extraxted_Attachment(0)+&quot;\New Hire.xlsx&quot;]">
