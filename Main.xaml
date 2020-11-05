@@ -67,7 +67,6 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="PrePayroll" sap:VirtualizedContainerService.HintSize="803,2538" sap2010:WorkflowViewState.IdRef="Sequence_6">
@@ -525,10 +524,12 @@
         </ui:SendOutlookMail>
       </If.Else>
     </If>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Convert LSMW" sap:VirtualizedContainerService.HintSize="761,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="flow_lsmw.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Convert LSMW" sap:VirtualizedContainerService.HintSize="761,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="flow_lsmw.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:IEnumerable(x:Object)" x:Key="Data_Setting_arg">[Data_Setting]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Folder_Acording_to_Date">[Folder_Acording_to_Date]</InArgument>
+        <InArgument x:TypeArguments="scg:List(scg:List(scg:List(x:String)))" x:Key="List_Data_Matriks_arg">[List_Data_Matriks]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="List_Type_Process_arg">[List_Type_Process]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="761,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" />

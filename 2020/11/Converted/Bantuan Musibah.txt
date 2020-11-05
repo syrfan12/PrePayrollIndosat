@@ -1,0 +1,2 @@
+Pers. number	Subtype	End Date	upload_PENS	Wage Type	Wage Type Amount for Payments	Currency Key
+6042		30.11.2020	01.11.2020	2060	7500000	IDR
